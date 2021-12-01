@@ -37,6 +37,8 @@ class InstructionFetch extends MultiIOModule {
   // PC 自增 4，这样就可以取到下一条指令了。
   PC := PC + 4.U
 
+  // Chiro says TODO: add ios to control jumps
+
   // 指令送入 io.out 这个 Bundle
   io.out.Inst := IMEM.io.instruction
 

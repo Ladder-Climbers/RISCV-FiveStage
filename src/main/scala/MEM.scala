@@ -23,6 +23,11 @@ class MemoryFetch() extends MultiIOModule {
 
   val DMEM = Module(new DMEM)
 
+  // Chiro: **WARNING** `DMEM` uses `SyncReadMem` as memory, 
+  //        whose read operation needs another clock to get the data.
+  //        Just like Xilinx® Block Memory IP.
+  //        So you can move the clock to MEMBarrier (or you have better plan?)
+
 
   /**
     * Setup. You should not change this code

@@ -49,6 +49,7 @@ class CPU extends MultiIOModule {
 
 
   // 下面开始干正事
+  // Chiro: Just some connections (lol)
   IFBarrier.in <> IF.io.out
   ID.io.in <> IFBarrier.out
 }

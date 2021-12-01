@@ -23,6 +23,12 @@ class InstructionDecode extends MultiIOModule {
       val in = Input(new IFBarrierBundle) // 从 IFBarrier 传来的地址和指令
       val out = Output(new IDBarrierBundle) // 传向 IDBarrier
       // TODO: 读写 32 个寄存器的东西……
+      // Chiro: The ID Module is to: 
+      //  1. Decode the instruction (has been implemented in Decoder.scala)
+      //  2. Arrange the data to calc in EX module (op1, op2, aluOp)
+      //  3. Stall (pause) the flow line if necessary
+      //  4. Judge whether to jump and tell IF module
+      //  5. Solve data dependency problem
     }
   )
 
@@ -48,6 +54,6 @@ class InstructionDecode extends MultiIOModule {
   registers.io.writeData    := 0.U
 
   decoder.instruction := io.in.Inst // 将指令送入 Decoder 译码
-  // 寄了
-
+  // Don't 寄了
+  // 
 }

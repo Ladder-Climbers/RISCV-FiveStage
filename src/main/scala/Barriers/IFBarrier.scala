@@ -10,6 +10,7 @@ class IFBarrierBundle extends Bundle {
 }
 
 // IF 屏障，PC 直接线网连结，指令需要寄存器缓冲一拍
+// Chiro: Infact... It's Five Stage, so we just need to delay 3 clocks in each module.
 class IFBarrier extends MultiIOModule {
   val io = IO(new Bundle {
     val in = Input(new IFBarrierBundle)
