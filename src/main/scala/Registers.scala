@@ -2,6 +2,9 @@ package FiveStage
 import chisel3._
 import chisel3.experimental.MultiIOModule
 
+// 寄存器模块，应该 32 个 32 位寄存器
+// 一次可以读俩
+// 地址线宽度是 5，数据线宽度是 32
 
 /**
   * This module is already done. Have one on me

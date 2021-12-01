@@ -3,10 +3,11 @@ import chisel3._
 import chisel3.util.{ BitPat, MuxCase }
 import chisel3.experimental.MultiIOModule
 
+// 译码模块
 
 class InstructionDecode extends MultiIOModule {
 
-  // Don't touch the test harness
+  // （勿动）测试夹具
   val testHarness = IO(
     new Bundle {
       val registerSetup = Input(new RegisterSetupSignals)
@@ -16,11 +17,12 @@ class InstructionDecode extends MultiIOModule {
     })
 
 
+  // 译码模块 IO
   val io = IO(
     new Bundle {
-      /**
-        * TODO: Your code here.
-        */
+      val in = Input(new IFBarrierBundle) // 从 IFBarrier 传来的地址和指令
+      val out = Output(new IDBarrierBundle) // 传向 IDBarrier
+      // TODO: 读写 32 个寄存器的东西……
     }
   )
 
@@ -45,5 +47,7 @@ class InstructionDecode extends MultiIOModule {
   registers.io.writeAddress := 0.U
   registers.io.writeData    := 0.U
 
-  decoder.instruction := 0.U.asTypeOf(new Instruction)
+  decoder.instruction := io.in.Inst // 将指令送入 Decoder 译码
+  // 寄了
+
 }
